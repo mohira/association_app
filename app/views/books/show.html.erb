@@ -10,5 +10,18 @@
   <%= @book.price %>
 </p>
 
+<% if @book.reviews.count > 0 %>
+  <h2>投稿されたレビュー(<%= @book.reviews.count %>件)</h2>
+  <% @book.reviews.each do |review| %>
+    <div>
+      投稿者: <%= review.user.email %>さん<br>
+      内容: <%= review.body %>
+      <hr>
+    </div>
+  <% end %>
+<% else %>
+  <h2>投稿されたレビューはありません</h2>
+<% end %>
+
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>
