@@ -1,2 +1,9 @@
 <h2><%= @book.title %>への新規レビュー</h2>
 
+<%= form_for [@book, @review] do |f| %>
+  <div>
+    <%= f.label :body, 'レビュー内容' %>
+    <%= f.text_area :body %>
+  </div>
+  <%= f.submit %>
+<% end %>
