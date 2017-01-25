@@ -1,6 +1,14 @@
 <h2><%= @book.title %>への新規レビュー</h2>
 
+
 <%= form_for [@book, @review] do |f| %>
+  <% if @review.errors.any? %>
+    <div>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li style="color: red;"><%= msg %></li>
+      <% end %>
+    </div>
+  <% end %>
   <div>
     <%= f.label :body, 'レビュー内容' %>
     <%= f.text_area :body %>
